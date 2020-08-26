@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arch-Installation-steps</title>
+    <style>
+      html{
+        background: black;
+        /*filter: invert(1) hue-rotate(90deg);*/
+      }
+      body{
+        color:white;
+      }
+      p {
+        color: gray;
+      }
+      b {
+        color: greenyellow;
+      }
+      .warning {
+        color: coral;
+      }
+      .info {
+        color: dodgerblue;
+      }
+      select{
+        background-color: silver;
+        color: blue;
+        border-radius: 5px;
+      }
+      #info{
+        font-size: 30px;
+        font-weight: bold;
+        font-family: fantasy;
+        background: linear-gradient(to left, darkorange, lime);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline;
+      }
+      #textinp{
+        text-transform: lowercase;
+        border:2px solid #0000ff;
+        border-radius: 10px;
+        border-left:4px solid #0000ff;
+      }
+      footer{
+        background-color:grey;
+        padding:1px;
+        color:black;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+            }
+      #desktop, #window, #wiki, #m-apps, #termapps, #kde, #gnome, #xfce, #lxde, #i3, #moreapps, #manager, #chrome, #vscode{ 
+        display: none;
+      }
+      #install, #Desktop, #aur, #Apps{
+        display:none;
+      }
+      #info, #curs{
+        cursor: pointer;
+      }
+      #wiki{
+        top: 40%;
+        transform: translate(50%, 50%);
+      }
+      #home{
+        display: block;
+      }
+      .info a{
+        text-decoration: none;
+        color: dodgerblue;
+      }
+      hr{
+        border: 1px dashed;
+        color: grey;
+      }
+      span{
+        color: greenyellow;
+        font-weight: bold;
+      }
+      #navbox{
+        margin:0px;
+        padding: 0px;
+        box-sizing: border-box; 
+      }
+      nav{
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 8vh;
+        background-color: aqua;
+      }
+      .logo{
+        color: rgb(223, 217, 217);
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-size: 20px;
+        float: left;
+      }
+      .nav-links{
+        display: flex;
+        justify-content: space-around;
+        width: 40%;
+      }
+      .nav-links li a:hover{
+        color: red;
+      }
+      .nav-links a{
+        color:  black;
+        text-decoration: none;
+        letter-spacing: 3px;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      .nav-links li{
+        list-style: none;
+      }
+      #main-logo{
+        background: linear-gradient(to left, red, blue);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline;
+      }
+      b::selection{
+        background: green;
+        color: white;
+      }
+      #para::first-letter{
+        font-size: 2rem;
+        font-weight: bold;
+        font-family: sans-serif;
+        color: aqua;
+      }
+      .box{
+        position:absolute;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        text-align: center;
+        top: 30%;
+      }
+      .box .heading span{
+        font-size: 120px;
+        display: inline-block;
+        background: linear-gradient(to left, aqua, blue);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family:serif;
+      }
+      .box.reveal .heading span{
+        animation: headingIn 1s ease forwards;
+        animation-delay: 2s;
+        opacity: 0;
+      }
+      @keyframes headingIn{
+        0%{
+          transform: translateY(100px);
+          opacity: 1;
+        }
+        100%{
+          transform: translateY(20px);
+          opacity: 1;
+        }
+      }
+      .box .line{
+        height: 5px;
+        background-color: white;
+      }
+      .box .sub-heading span{
+        font-size: 50px;
+        display: inline-block;
+        background: linear-gradient(to left, darkorange, lime);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .box .heading{
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .box .sub-heading{
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+        font-weight: normal;
+      }
+      .box.reveal .line{
+        animation: lineIn 1s linear forwards;
+      }
+      @keyframes lineIn{
+        0%{
+          width:0%;
+        }
+        100%{
+          width: 100%;
+        }
+      }
+      #chrome, #vscode, #moreapps{
+        animation: lineIn 1s ease forwards;
+      }
+      #termapps, #wiki{
+        animation: fadeApps 1s ease forwards;
+      } 
+      @keyframes fadeApps{
+        from{
+          transform: rotateX(90deg);
+        }
+        to{
+          transform: rotateX(0deg);
+        }
+      }
+      .box.reveal .sub-heading span{
+        opacity: 0;
+        animation: subHeadingIn 1s ease forwards;
+        animation-delay: 1s;
+      }
+      @keyframes subHeadingIn{
+        0%{
+          transform: translateY(-100%);
+          opacity: 1;
+        }
+        100%{
+          transform: translateY(-14%);
+          opacity: 1;
+        }
+      }
+      #min{
+        position: absolute;
+        top: 50%;
+        animation: homeIn 1s ease backwards;
+        opacity: 1;
+      }
+      @keyframes homeIn{
+        0%{
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        100%{
+          transform: translateY(0%);
+          opacity: 1;
+        }
+      }
+      #aur, #Apps{
+        opacity: 1;
+        animation: everythingLeft 1s ease forwards;
+        position: absolute;
+      }
+      @keyframes everythingLeft{
+        0%{
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        100%{
+          transform: translateX(0%);
+          opacity: 1;
+        }
+      }
+      #Desktop{
+        animation: everythingRight 1s ease-in-out forwards;
+        position: absolute;
+        opacity: 1;
+      }
+      @keyframes everythingRight{
+        0%{
+          transform: rotateZ(90deg);
+          opacity: 0;
+        }
+        100%{
+          transform: rotateZ(0deg);
+          opacity: 1;
+        }
+      }
+      #install{
+        animation: sizeIn 2s ease forwards;
+      }
+      @keyframes sizeIn{
+        0%{
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        50%{
+          transform: translateY(0%);
+        }
+        100%{
+          opacity: 1;
+        }
+        /*0%{
+          transform: translateY(100%);
+        }
+        100%{
+          transform: translateY(0%);
+        }*/
+      }
+      #manager, #desktop, #window{
+        animation: manOne 2s ease forwards;
+        opacity: 1;
+      }
+      @keyframes manOne{
+        0%{
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        100%{
+          transform: translateY(0%);
+          opacity: 1;
+        }
+      }
+      #kde, #gnome, #xfce, #lxde, #i3{
+        animation: manTwo 1s linear forwards;
+        opacity: 1;
+      }
+      @keyframes manTwo{
+        0%{
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        100%{
+          transform: translateY(0%);
+          opacity: 1;
+        }
+      }
+      #Alabel{
+        color: blue;
+        font-weight: bold;
+        font-size: 30px;
+        font-variant: small-caps;
+      }
+      #Ainput{
+        border-radius: 30px;
+      }
+      #Abutton{
+        border-radius: 10px;
+        font-weight: bold;
+        color:#0000ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbox">
+    <nav>
+      <div class="logo">
+        <h1 id="main-logo"> Arch Linux </h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#1" class="li" onclick="home()">Home</a></li>
+        <li><a href="#2" class="li" onclick="install()">Install</a></li>
+        <li><a href="#3" class="li" onclick="aur()">Aur</a></li>
+        <li><a href="#4" class="li" onclick="desk()">Desktop</a></li>
+        <li><a href="#5" class="li" onclick="APPS()">Apps</a></li>
+      </ul>
+    </nav>
+  </div>
+    <div id="everythig"></div>
+    <div id="home">
+  <div class="box reveal">
+    <h1 class="heading"><span>A</span></h1>
+    <div class="line"></div>
+    <h4 class="sub-heading"><span>Arch linux</span></h4>
+  </div>
+    <div id="min">
+    <p id="para">Arch Linux is a 64bit OS</p>
+    <p>
+      * This is entirely an bare bone installation everything has to be
+      installed manually
+    </p>
+    <p>* this is a very Light-Weight Linux Distro but Hard to install</p>
+    <p>
+      * Arch Linux has the best user repository, this is the only distro
+      maintained by the community
+    </p>
+    <p>
+      * Arch Linuux is also know Bleeding-Edge Distro because it keeps on
+      updating almost Everyday
+    </p>
+    <p>
+      * And it has the one of the best package Manager
+      <b class="info">pacman</b>
+    </p>
+    <p>
+      * the link to the iso
+      <b class="info"><a href="https://www.archlinux.org/download/">https://www.archlinux.org/download</a>/</b> select the iso
+      according to the country
+    </p>
+    <p>* First load the iso in usb which will be around 600mb</p>
+    <p>* shutdown the pc and boot into bios by pressing F12 or so..</p>
+    <p>
+      * once loading into the UEFI-boot using the iso select
+      <b class="info">Boot Arch Linux (x86_64)</b>
+      option
+    </p>
+    <p>* Now you will be prompted to the terminal for the installation</p>
+  </div>
+</div>
+  <div id="install">
+    <h1>Installation:-</h1>
+    <h2>setup the disk partitions:</h2>
+    <p>* <b>fdisk -l</b><br /> to list the available disks in the pc</p>
+    <p>
+      * <b>fdisk /dev/diskname</b> <br />selecting the disk , change the disk
+      name for eg. "fdisk /dev/sda" is my disk name
+    </p>
+    <p class="info">Here there are two options if you want single boot or dual boot</p>
+    <p>
+      * <b>g</b> <br />for single boot this will create a New gpt label in disk
+      if you want dual boot skip this step
+    </p>
+    <h4>for efi partition:</h4>
+    <p>* <b>n</b> <br />this will create the new partion</p>
+    <p>
+      * <b>press enter</b> <br />if you want fdisk to give a default partion
+      number
+    </p>
+    <p>* <b>press enter</b> <br />this will create label on the partion</p>
+    <p>
+      * <b>+512M</b> <br />this is efi partition size which we use for booting
+      the arch
+    </p>
+    <p>* <b>t</b> <br />for selecting the type of partion</p>
+    <p>
+      * <b>L</b> <br />for listing the types of partition names use "q" to quit
+      the list
+    </p>
+    <p>* <b>1</b> <br />this for making the partition type to efi</p>
+    <h4>for swap partition:</h4>
+    <p>* <b>n</b> <br />this will create the new partion</p>
+    <p>
+      * <b>press enter</b> <br />if you want fdisk to give a default partion
+      number
+    </p>
+    <p>* <b>press enter</b> <br />this will create label on the partion</p>
+    <p>
+      * <b>+2G</b> <br />this is swap partition size is always depends on your
+      ram
+    </p>
+    <p>* <b>t</b> <br />for selecting the type of partion</p>
+    <p>
+      * <b>L</b> <br />for listing the types of partition names use "q" to quit
+      the list
+    </p>
+    <p>* <b>19</b> <br />this for making the partition type to linux-swap</p>
+    <h4>for mnt partition:</h4>
+    <p>* <b>n</b> <br />this will create the new partion</p>
+    <p>
+      * <b>press enter</b> <br />if you want fdisk to give a default partion
+      number
+    </p>
+    <p>* <b>press enter</b> <br />this will create label on the partion</p>
+    <p>
+      * <b>+50G</b> <br />this is mnt partition size if you are more into gaming or videos editings then you can
+      add more
+    </p>
+    <h4>for home partition:</h4>
+    <p>* <b>n</b> this will create the new partion</p>
+    <p>
+      * <b>press enter</b> <br />if you want fdisk to give a default partion
+      number
+    </p>
+    <p>* <b>press enter</b> <br />this will create label on the partion</p>
+    <p>
+      * <b>press enter</b> <br />home partition , this will use the rest all
+      space left in your disk
+    </p>
+    <h4>for writing the partitions to disk:</h4>
+    <p>* <b>w</b> to finilise the partitions</p>
+    <h2>making the partitions:</h2>
+    <p class="warning">
+      ! Select the partition number properly , i am using myne so replace those
+      with yours
+    </p>
+    <p>
+      * <b>mkfs.fat -F32 /dev/sda1</b> <br />this will make the partition for
+      ext4
+    </p>
+    <p>
+      * <b>mkswap /dev/sda2</b> <br />this will make the partition to the swap
+    </p>
+    <p>
+      * <b>mkfs.ext4 /dev/sda3</b> <br />this will make the partition to the
+      file syatem
+    </p>
+    <p>
+      * <b>mkfs.ext4 /dev/sda4</b> <br />this will make the partition to the
+      file system
+    </p>
+    <h2>mounting the partitions:</h2>
+    <p>
+      * <b>mount /dev/sda3 /mnt</b> <br />this will mount the partition to mnt
+    </p>
+    <p>* <b>mkdir /mnt/home</b> <br />this will make the home directory</p>
+    <p>
+      * <b>mount /dev/sda4 /mnt/home</b> <br />this will mount the partition to
+      home
+    </p>
+
+    <p>* <b>swapon /dev/sda2</b> <br />this will make the swap</p>
+    <h2>for fstab:</h2>
+    <p>* <b>mkdir /mnt/etc</b> <br />this will make etc directory</p>
+    <p>
+      * <b>genfstab -U -p/mnt >> /mnt/etc/fstab</b> <br />this will generate the
+      fstab to the created directory
+    </p>
+    <p>
+      * <b>cat /mnt/etc/fstab</b> <br />this will show the partitions in fstab
+    </p>
+    <h2>connecting to network and setting up mirrorlist:</h2>
+    <p>* <b>iwctl</b> <br />interface prompt</p>
+    <p>*<b>device list</b><br />to show the available devices</p>
+    <p>*<b>station wlan0 scan</b><br />mine is wlan0 replace it according to yours</p>
+    <p>*<b>station wlan0 get-networks</b><br />will display the available wifi names</p>
+    <p>*<b>station wlan0 connect wifiname</b><br />replace the wifiname with yours, it will ask the passphrase</p>
+    <p>*<b>exit</b><br />this will exit the interface</p>
+    <p>
+      * <b>reflector --country india --save /etc/pacman.d/mirrorlist</b> <br />will save the mirrors to the mirrorlist
+      mirrors
+    </p>
+    <p class="warning">reflector is preinstalled in the iso, so change the country according to yours</p>
+    <p>* <b>pacman -Syy</b> <br />this will sync the repositories</p>
+    <p class="info">
+      ! if the net speed is low change the mirrors and try again
+    </p>
+    <h2>installing the kernel and drivers for the system:</h2>
+    <p>
+      * <b>pacstrap -i /mnt base base-devel linux-firmware</b> <br />this will
+      start installing the base into the mnt directory
+    </p>
+    <p>* <b>arch-chroot /mnt</b> <br />this will mount the mnt directory</p>
+    <p class="warning">
+      ! here we have two types of kernels normal and long-term choose one
+      according to your need
+    </p>
+    <p>
+      * <b>pacman -S linux linux-headers nano</b> <br />this for normal linux
+      kernel
+    </p>
+    <p>
+      * <b>pacman -S linux-lts linux-lts-headers nano</b> <br />
+      this is for long term linux kernel
+    </p>
+    <p>
+      *
+      <b>
+        pacman -S networkmanager wpa_supplicant wireless_tools dialog
+        network-manager-applet
+      </b>
+      <br />this will install the required tools for network
+    </p>
+    <p>
+      * <b>systemctl enable NetworkManager</b> <br />this will enable the
+      network manager on booting
+    </p>
+    <p class="warning">
+      ! change the kernel according to your installed kernel
+    </p>
+    <p>
+      * <b>mkinitcpio -p linux</b> <br />bashscript used to create an initial
+      ramdisk environment
+    </p>
+    <p>* <b>nano /etc/locale.gen</b> <br />this will list the locale list</p>
+    <p class="info">
+      remove the "#" in front of the your prefered locale and save it
+    </p>
+    <p>if you dont know about the locale use the en_us-utf8, bcz most of the apps use it</p>
+    <p>
+      * <b>locale-gen</b> <br />this will generate the locale for your kernel
+    </p>
+    <p>* <b>passwd</b> <br />this for setting the root password</p>
+    <p>
+      * <b>useradd -m -g users -G wheel username</b> <br />this will add a user
+      to the wheel group
+    </p>
+    <p>* <b>passwd username</b> <br />setting password for the user</p>
+    <p>* <b>EDITOR=nano visudo</b> <br />this will edit the sudo config</p>
+    <p>remove the "#" in front of %wheelall=(all)all</p>
+    <p>
+      * <b>pacman -S grub efibootmgr dosfstools os-prober mtools</b>
+      <br />installing grub and required tools for booting
+    </p>
+    <p>* <b>mkdir -p /boot/EFI</b> <br />this will make boot directory</p>
+    <p>
+      * <b>mount /dev/sda1 /boot/EFI</b> <br />this will make the partition
+      to Boot
+    </p>
+    <p class="warning">
+      ! please make sure no errors after installing if it shows erros search
+      online for other grub installation
+    </p>
+    <p>
+      *
+      <b>
+        grub-install --target=x86_64-efi --bootloader-id=GRUB
+        --efi-directory=/boot/EFI --no-nvram --removable
+      </b>
+
+      <br />this will install grub to the boot directory
+    </p>
+    <p>
+      * <b>mkdir /boot/grub/locale</b> <br />this will make the locale directory
+    </p>
+    <p>
+      *
+      <b
+        >cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo
+        /boot/grub/locale/en.mo
+      </b>
+      <br />this will copy the grub configs
+    </p>
+    <p>*
+      <b>grub-mkconfig -o /boot/grub/grub.cfg</b>
+      <br />setting up the grub config file so that it will make the arch boot
+    </p>
+    <p>
+      * <b>pacman -S intel-ucode xorg-server mesa</b> <br />this will drivers
+      for intel graphics
+    </p>
+    <p>* <b>pacman -S nvidia xorg-server</b> <br />for nvidia graphics</p>
+    <p>* <b>exit</b> <br /></p>
+    <p>* <b>reboot</b></p>
+  </div>
+  <div id="Desktop">
+    <p class="info">After rebooting Arch linux will greet you with an terminal</p>
+    <p>
+      To make Arch usable as other distros we have to download and start the desktop, if not you just keep stuck with the
+      terminal
+    </p>
+    <p style="color:red">
+      Here we have two types of environments:- <p class="info"> 1. Desktop-environment</p> <p class="info">2.
+      Window-manager</p>
+    </p>
+    <p class="warning">
+      ! There are lot of desktop managers & window managers, but I am giving
+      very few of those
+    </p>
+    <p>Login as the user which have sudo preferences</p>
+      <p class="info" id="info" onclick="manager()">! Click Me for Options</p>
+	<div id="manager">
+    <p class="info">click on headings for more</p>
+    <h1 id="curs" onclick="desktop()">1. Desktop-environment:</h1>
+    <div id="desktop">
+    <h2 onclick="kde()" id="curs">I. KDE Plasma:</h2>
+    <div id="kde">
+  <p>
+    * <b>sudo pacman -S sddm plasma konsole dolphin firefox</b> <br />this
+    installs the kde and required apps for normal usage
+  </p>
+  <p>
+    * <b>sudo systemctl enable sddm</b> <br />we enable the desktop manager to
+    load on boot
+  </p>
+  <p>
+    * <b>sudo systemctl start sddm</b> <br />this will start the desktop
+    manager
+  </p>
+    </div>
+    <h2 onclick="gnome()" id="curs">II. Gnome:</h2>
+    <div id="gnome">
+  <p>
+    * <b>sudo pacman -S gnome firefox</b> <br />this will install the gnome
+    and browser
+  </p>
+  <p>
+    * <b>sudo systemctl enable gdm</b> <br />this will enable the desktop
+    manager to load on boot
+  </p>
+  <p>
+    * <b>sudo systemctl start gdm</b> <br />this will start the desktop
+    manager
+  </p>
+</div>
+
+  <h2 onclick="xfce()" id="curs">III. Xfce:</h2>
+    <div id="xfce">
+    <p>* <b>sudo pacman -S xfce4 xfce4-goodies lxdm</b> <br>this will install xfce</p>
+    <p>* <b>sudo systemctl enable lxdm</b> <br>this will enable the disktop manager to load on boot</p>
+    <p>* <b>sudo systemctl start lxdm</b> <br>this will start the desktop manager</p>
+    </div>
+  <h2 onclick="lxde()" id="curs">IV. Lxde:</h2>
+  <div id="lxde">
+    <p>* <b>sudo pacman -S lxde lxdm</b> <br>this for installing the lxde</p>
+    <p>* <b>sudo systemctl enable lxdm</b> <br>this will enable the desktop manager to load on boot</p>
+    <p>* <b>sudo systemctl start lxdm</b> <br>this will start the desktop manager</p>
+  </div>
+</div>
+  <h1 onclick="windowm()" id="curs">2. Window-manager:</h1>
+    <div id="window">
+    <p class="info">For window managers we need config files for basic operation so search online for config files</p>
+    <h2 onclick="i3()" id="curs">I. i3wm:</h2>
+    <div id="i3">
+    <p>* <b>sudo pacman -S i3 terminator thunar firefox xorg-xinit</b> <br>installing the i3 and other required apps</p>
+    <p>* <b>touch .xinitrc</b> <br>we have to create the config file so that it can load the window manager</p>
+    <p>* <b>nano .xinitrc</b> <br>we are editing the config file</p>
+    <p>Add <b>exec i3</b> to the end of the config, so that we can run the window manger</p>
+    <p>* <b>startx</b> <br>this will start the window manager</p>
+  </div>
+</div>
+</div>
+</div>
+<div id="aur">
+<h1>Arch user repository(AUR)</h1>
+<p class="info">The Arch User Repository (AUR) is a community-driven repository for Arch users. It contains package descriptions (PKGBUILDs) that allow you to compile a package from source with makepkg and then install it via pacman.</p>
+<p>by this we can install few of the applications by using, yay -S</p>
+<h2>yay:</h2>
+<p>* <b>sudo pacman -S git</b><br />we need git package to clone the files into the required directory</p>
+<p>* <b>git clone https://aur.archlinux.org/yay.git</b><br />this will clone the git package into the home directory</p>
+<p>* <b>cd yay</b><br />this will change the directory to yay</p>
+<p>* <b>makepkg -si</b><br />this will install the yay package</p>
+<p>* <b>yay -S pacmac-aur</b><br />this will install the software manager</p>
+</div>
+<div id="Apps">
+<h1>Additional packages or apps</h1>
+<p class="info">select the options in the list below</p>
+<select id="add-apps" onchange="apps()">
+  <option >Select Option</option>
+  <option value="google-chrome" id="google-chrome">Google-Chrome</option>
+  <option value="visual-studio" id="visual-studio">Visual-Studio-Code</option>
+  <option value="additional" id="additional">General-Apps</option>
+  <option value="terminal" id="termbase">Terminal-Based</option>
+  <option value="wiki-search" id="arch-wiki">Arch-wiki_search</option>
+</select>
+<br /><br />
+<div id="termapps">
+<h3>terminal based apps</h3>
+<p class="warning">These apps does require config files for there appearence & operation</p>
+<p>for music type : <b class="info">music</b></p>
+<p>for file-manager: <b class="info">file</b></p>
+<p>for rxvt-unicode: <b class="info">urxvt</b></p>
+<p>for text-editor: <b class="info">text</b></p>
+<input type="text" id="textinp" placeholder="enter the above options"></input>
+<br /><br />
+<input type="radio" id="normal" name="package" value="normal" />
+<label for="normal">Pacman</label>
+<input type="radio" name="package" id="community" value="aur" />
+<label for="community">Aur</label>
+<br /><br />
+<button onclick="forfun()">send</button>
+<br /><br />
+<b id="t-apps"></b>
+</div>
+<br /><br />
+<div id="casual"></div>
+<br />
+<div id="chrome">
+  <input type="radio" name="google" onclick="gc()">
+  <label for="google">Google-Chrome</label>
+  <input type="radio" name="google" onclick="gcb()">
+  <label for="beta">Google-Chrome-Beta</label>
+  <input type="radio" name="google" onclick="cr()">
+  <label for="chromium">Chromium</label>
+</div>
+<div id="vscode">
+<input type="radio" name="visual" onclick="vs()">
+<label for="vstudio">Visual-Studio-Code</label>
+<input type="radio" name="visual" onclick="vsb()">
+<label for="vstudiobin">Visual-Studio-Code-Bin</label>
+<input type="radio" name="visual" onclick="vsi()">
+<label for="vstudioinsid">Visual-Studio-Code-Insiders</label>
+<input type="radio" name="visual" onclick="vsg()">
+<label for="vstudiogit">Visual-Studio-Code-git</label>
+</div>
+<div id="moreapps">
+<input type="checkbox" name="cbox" id="office" value="libreoffice">
+<label for="office">Office</label>
+<input type="checkbox" name="cbox" id="music" value="audacious">
+<label for="music">Music</label>
+<input type="checkbox" name="cbox" id="vlc" value="vlc">
+<label for="vlc">Vlc</label>
+<input type="checkbox" name="cbox" id="mail" value="geary">
+<label for="mail">Mail</label>
+<input type="checkbox" name="cbox" id="image" value="gimp">
+<label for="image">Image viewer</label>
+<input type="checkbox" name="cbox" id="videoe" value="kdenlive">
+<label for="videoe">Video editor</label>
+<input type="checkbox" name="cbox" id="game" value="steam">
+<label for="game">Steam</label>
+<input type="checkbox" name="cbox" id="termi" value="terminator">
+<label for="termi">Terminal</label>
+<input type="checkbox" name="cbox" id="camera" value="cheese">
+<label for="camera">Camera</label>
+<button onclick="mapps()">submit</button>
+</div>
+<br />
+<span id="m-apps">
+  
+</span>
+<br />
+<div id="wiki">
+  <form action="" method="POST" target="_blank">
+  <label for="search" id="Alabel">enter name of the required software</label>
+  <br>
+  <br>
+    <input type="text" name="search" id="Ainput" placeholder="Arch-wiki Search" required/>
+    <input type="submit" id="Abutton" value="search">
+</form>
+<br><br>
+<form action="https://aur.archlinux.org/packages/?" method="GET" target="_blank">
+  <label id="Alabel" for="aursearch">enter the name of required required aur software</label>
+  <br><br>
+  <input type="text" name="K" id="Ainput" placeholder="AUR_Search" required/>
+  <input type="submit" id="Abutton" value="aursearch">
+</form>
+
+</div>
+</div>
+
+
+
+<footer><i>@ warlord-warrior ||</i>
+<i>welcome to ArchLinux</i>
+</footer>
+<script type="text/javascript">
+var on1 = document.getElementById("home");
+var on2 = document.getElementById("install");
+var on3 = document.getElementById("aur");
+var on4 = document.getElementById("Desktop");
+var on5 = document.getElementById("Apps");
+function home(){
+      on1.style.display = "block";
+      on2.style.display = "none";
+      on3.style.display = "none";
+      on4.style.display = "none";
+      on5.style.display = "none";
+    }
+function install(){
+      on1.style.display = "none";
+      on2.style.display = "block";
+      on3.style.display = "none";
+      on4.style.display = "none";
+      on5.style.display = "none";
+    }
+function aur(){
+      on1.style.display = "none";
+      on2.style.display = "none";
+      on3.style.display = "block";
+      on4.style.display = "none";
+      on5.style.display = "none";
+}
+function desk(){
+      on1.style.display = "none";
+      on2.style.display = "none";
+      on3.style.display = "none";
+      on4.style.display = "block";
+      on5.style.display = "none";
+}
+function APPS(){
+      on1.style.display = "none";
+      on2.style.display = "none";
+      on3.style.display = "none";
+      on4.style.display = "none";
+      on5.style.display = "block";
+}
+
+  
+  function apps(){
+    var cas = document.getElementById("casual");
+    var opt = document.getElementById("add-apps").value;
+    var gog = document.getElementById("chrome");
+    var vs = document.getElementById("vscode");
+    var map = document.getElementById("moreapps");
+    var m_p = document.getElementById("m-apps");
+    var tmp = document.getElementById("termapps");
+    var aws = document.getElementById("wiki");
+    cas.innerHTML = "choose the option";
+    
+    if( opt == "google-chrome" ){
+        gog.style.display = "block";
+        vs.style.display = "none";
+        map.style.display = "none";
+        m_p.style.display = "none";
+        tmp.style.display = "none";
+        aws.style.display = "none";
+    }else if(opt == "visual-studio"){
+        gog.style.display = "none";
+        vs.style.display = "block";
+        map.style.display = "none";
+        m_p.style.display = "none";
+        tmp.style.display = "none";
+        aws.style.display = "none";
+    }else if (opt == "additional"){
+        map.style.display = "block";
+        gog.style.display = "none";
+        vs.style.display = "none";
+        m_p.style.display = "block";
+        tmp.style.display = "none";
+        aws.style.display = "none";
+    }else if(opt == "terminal"){
+        cas.innerHTML = "type the values correctly";
+        tmp.style.display = "block";
+        gog.style.display = "none";
+        vs.style.display = "none";
+        map.style.display = "none";
+        m_p.style.display = "none";
+        aws.style.display = "none";
+    }else if(opt == "wiki-search"){
+        aws.style.display = "block";
+        gog.style.display = "none";
+        vs.style.display = "none";
+        map.style.display = "none";
+        m_p.style.display = "none";
+        tmp.style.display = "none";
+        cas.innerHTML = "Everything related arch linux will be obtained by searching here";
+    }else{
+        gog.style.display = "none";
+        vs.style.display = "none";
+        map.style.display = "none";
+        m_p.style.display = "none";
+        tmp.style.display = "none";
+        aws.style.display = "none";
+        cas.innerHTML = "this has no options";
+    }
+}
+  function gc(){
+    var str = "yay -S google-chrome";
+    alert(str);
+  }
+  function gcb(){
+    alert("yay -S google-chrome-beta");
+  }
+  function cr(){
+    alert("sudo pacman -S chromium")
+  }
+  function vs(){
+      alert("sudo pacman -S code");
+    }
+    function vsb(){
+      alert("yay -S visual-studio-code-bin");
+    }
+    function vsi(){
+      alert("yay -S visual-studio-code-insiders");
+    } 
+    function vsg(){
+      alert("yay -S code-git");
+    }
+    function mapps(){
+      var appli = document.getElementsByName("cbox");
+      var selectedItems = "";
+      var nap = document.getElementById("m-apps");
+      for(var i = 0; i < appli.length; i++){
+        if(appli[i].type=="checkbox" && appli[i].checked==true){
+          selectedItems+=appli[i].value+" ";
+      }
+      }
+      nap.innerHTML = "sudo pacman -S "+selectedItems;
+      if(selectedItems == 0){
+        nap.innerHTML = "sudo pacman -Syy";
+      }
+    }
+    function forfun(){
+      var fun = document.getElementById("textinp").value.toLowerCase().trim();
+      var napo = document.getElementById("t-apps");
+      var normal = document.getElementById('normal');
+      var community = document.getElementById('community');
+      var package = document.getElementsByName('package').checked;
+      var pac 
+      if(normal.checked)
+      {
+        pac = "sudo pacman -S ";
+      }else if(community.checked)
+      {
+        pac = "yay -S ";
+      }else{
+        pac = "search in google, the package name is: ";
+      }
+      var id = ["# ID's", "info", "textinp", "desktop", "window", "kde", "m-apps", "termapps", "gnome", "xfce", "lxde", "window", "t-apps", "i3", "home", "moreappps", "manager", "chrome", "vscode", "install", "Desktop", "aur", "APPS"];
+      var clas = [".CLASS", "warning", "info", "logo", "nav-links", "burger"];
+      var funct = ["FUNCTION()", "home", "install", "aur", "desk", "APPS", "apps", "gc", "gcb", "cr", "vs", "vsb", "vsi", "vsg", "mapps", "forfun", "manager", "kde", "gnome", "xfce", "lxde", "i3", "desktop", "window"];
+        var perrow = 1, 
+        count = 0, // Flag for current cell
+        table = document.createElement("table"),
+        row = table.insertRow();
+      if(fun == "music"){
+      napo.innerHTML = pac+"moc";
+      }else if(fun == "file"){
+      napo.innerHTML = pac+"ranger";
+      }else if(fun == "urxvt"){
+      napo.innerHTML = pac+"rxvt-unicode";
+      }else if(fun == "text"){
+      napo.innerHTML = pac+"vim";
+      }else if(fun == "" && package == false){
+      napo.innerHTML = "you haven't typed anything yet";
+      }else if(fun == "id"){
+      for (var i of id) {
+        var cell = row.insertCell();
+        cell.innerHTML = i;
+        count++;
+        if (count%perrow==0) {
+          row = table.insertRow();
+        }
+      }
+      napo.appendChild(table);
+  }else if(fun == "clas"){
+    for (var i of clas) {
+        var cell = row.insertCell();
+        cell.innerHTML = i;
+        count++;
+        if (count%perrow==0) {
+          row = table.insertRow();
+        }
+      }
+      napo.appendChild(table);
+  }else if(fun == "funct"){
+    for (var i of funct) {
+        var cell = row.insertCell();
+        cell.innerHTML = i;
+        count++;
+        if (count%perrow==0) {
+          row = table.insertRow();
+        }
+      }
+      napo.appendChild(table);
+  }else{
+      napo.innerHTML = "its not a correct option nor i am a google to search, try again";
+      }
+    }  
+	function manager(){
+	var man = document.getElementById("manager");
+		if(man.style.display == "none"){
+			man.style.display = "block";
+		}else{
+		man.style.display = "none";
+		}
+	}
+    function kde(){
+      var x = document.getElementById("kde");
+      if(x.style.display == "none"){
+        x.style.display = "block";
+      }else{
+        x.style.display = "none";
+      }
+    }
+    function gnome(){
+        var y = document.getElementById("gnome");
+        if(y.style.display == "none"){
+          y.style.display = "block"
+        }else {
+          y.style.display = "none"
+        }
+    }
+    function xfce(){
+      var z = document.getElementById("xfce");
+      if(z.style.display == "none"){
+        z.style.display = "block"
+      }else{
+        z.style.display = "none"
+      }
+    }
+    function lxde(){
+      var a = document.getElementById("lxde");
+      if(a.style.display == "none"){
+        a.style.display = "block"
+      }else{
+        a.style.display = "none"
+      }
+    }
+    function i3(){
+      var b = document.getElementById("i3");
+      if(b.style.display == "none"){
+        b.style.display = "block"
+      }else{
+        b.style.display = "none"
+      }
+    }
+    function desktop(){
+      var desk = document.getElementById("desktop");
+      if(desk.style.display == "none"){
+        desk.style.display = "block"
+      }else{
+        desk.style.display = "none"
+      }
+    }
+    function windowm(){
+      var wind = document.getElementById("window");
+      if(wind.style.display == "none"){
+        wind.style.display = "block"
+      }else{
+        wind.style.display = "none"
+      }
+    }
+    </script>
+  </body>
+</html>
