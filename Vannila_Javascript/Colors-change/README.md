@@ -5,4 +5,4 @@ this will change the colors by name
 this will change the colors by rgba codes
 
 # project1-2.html
-this will change the colors by hex codes
+this will change the colors by hex code
