@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project1</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      main {
+        margin-top: 200px;
+      }
+      li,
+      a,
+      button {
+        font-family: monospace;
+        font-weight: 500;
+        font-size: 16px;
+        color: aqua;
+        text-decoration: none;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 10%;
+        background-color: grey;
+      }
+      .nav-links {
+        list-style: none;
+      }
+      .nav-links li a:hover {
+        color: white;
+      }
+      h4 {
+        color: aliceblue;
+        padding-right: 150px;
+        font-weight: bold;
+      }
+      .nav-links li {
+        display: inline-block;
+      }
+      .nav-links li a {
+        padding-left: 50px;
+        font-weight: bolder;
+      }
+      button {
+        background-color: grey;
+        font-weight: bold;
+        color: white;
+        border: groove lightblue;
+        border-radius: 10px;
+        margin-top: 50px;
+      }
+      .container {
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="mylogo.png" alt="logo" />
+    </header>
+    <nav>
+      <div class="nav">
+        <ul class="nav-links">
+          <li>
+            <h4>color flipper</h4>
+          </li>
+          <li>
+            <a href="project1-0.html">C-Name</a>
+          </li>
+          <li>
+            <a href="project1-2.html">Hex</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <center>
+      <main>
+        <div class="container">
+          <h2>
+            Background Color :
+            <span class="color">rgba(255,255,255)</span>
+          </h2>
+          <button class="btn btn-hero" id="btn">Cahnage</button>
+        </div>
+      </main>
+    </center>
+    <script src="app1-1.js"></script>
+  </body>
+</html>
