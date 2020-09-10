@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-do list</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        color: white;
+      }
+      body {
+        min-height: 100vh;
+      }
+      header {
+        font-size: 1.5rem;
+        margin-top: 1vh;
+      }
+      header,
+      form {
+        min-height: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      form input,
+      form button {
+        padding: 0.5rem;
+        font-size: 2rem;
+        border: none;
+        background-color: white;
+        color: black;
+      }
+      form button {
+        background-color: lightgray;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: green;
+        font-weight: bold;
+      }
+      form button:hover {
+        background-color: green;
+        color: white;
+      }
+      .todo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .todo-list {
+        min-width: 30%;
+        list-style: none;
+      }
+      .todo {
+        margin: 0.5rem;
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        transition: all 0.5s ease;
+      }
+      .todo li {
+        flex: 1;
+        color: black;
+        background: white;
+      }
+      .trash-button,
+      .complete-button {
+        background: #ff0000;
+        color: white;
+        border: none;
+        padding: 1rem;
+        font-weight: bolder;
+        font-size: 1rem;
+      }
+      .complete-button {
+        background: green;
+      }
+      .completed {
+        text-decoration: line-through;
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="mylogo.png" alt="logo" />
+    <header>
+      <h1>Warlord's Todo-list</h1>
+    </header>
+    <form>
+      <input type="text" id="todo-input" />
+      <button class="todo-btn" type="submit">[+]Add</button>
+    </form>
+    <div class="todo-container">
+      <ul class="todo-list"></ul>
+    </div>
+    <script src="todo.js"></script>
+  </body>
+</html>
