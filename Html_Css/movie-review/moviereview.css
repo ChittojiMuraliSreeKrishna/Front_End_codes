@@ -1,0 +1,210 @@
+body {
+  font-family: Times New Roman;
+  font-size: 14px;
+  padding: 0;
+  background-color: grey;
+}
+
+nav {
+  background-color: darkorange;
+  color: white;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 50px;
+}
+
+nav img {
+  height: 30px;
+  margin-bottom: -10px;
+  margin-right: 10px;
+}
+
+nav ul li {
+  display: inline;
+  padding-right: 40px;
+  font-weight: bold;
+}
+
+nav ul li a {
+  color: white;
+  font-weight: normal;
+}
+
+main {
+  margin: 50px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: silver;
+  text-shadow: 3px 3px black;
+}
+
+h2 {
+  font-size: 18px;
+  line-height: 32px;
+  color: white;
+  margin-left: 200px;
+  text-shadow: 2px 2px black;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 50px 0 20px;
+  color: aqua;
+  text-shadow: 2px 2px black;
+}
+
+p {
+  background-color: white;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 18px;
+  margin: 30px 0;
+  line-height: 22px;
+}
+
+.movie-cover {
+  float: right;
+  width: 100px;
+  border: 1px solid;
+}
+.movie-plot {
+  float: left;
+  width: 150px;
+  border: 1px solid white;
+}
+
+video {
+  border: 2px solid white;
+  background-color: #fff;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  line-height: 20px;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: red;
+}
+
+table {
+  margin-top: 40px;
+  width: 100%;
+}
+table th {
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: black;
+  color: white;
+  line-height: 40px;
+  text-align: left;
+  padding: 0 20px;
+}
+table td {
+  padding: 0 20px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+strong {
+  font-weight: bold;
+}
+
+footer {
+  line-height: 50px;
+  background: darkorange;
+  font-size: 12px;
+  padding: 0 50px;
+}
+
+@media only screen and (max-width: 750px) {
+  nav {
+    height: auto;
+    line-height: 40px;
+    padding: 20px;
+  }
+
+  nav ul li {
+    display: block;
+    padding-right: 0;
+  }
+
+  main {
+    margin: 50px 20px;
+  }
+
+  .movie-cover {
+    float: none;
+    margin: 0 auto 40px;
+    display: block;
+  }
+
+  footer {
+    text-align: center;
+    padding: 0 20px;
+  }
+}
+form select {
+  background-color: black;
+  border: 1px solid gold;
+}
+form option {
+  color: gold;
+  font-weight: bold;
+}
+form button {
+  margin-left: 40px;
+  font-weight: bold;
+  color: gold;
+  background-color: black;
+  margin-top: 5px;
+  border: 1px solid gold;
+}
+form button:hover {
+  background-color: red;
+}
+select {
+  color: gold;
+  font-weight: bold;
+}
+.div {
+  display: flex;
+}
+.rating {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.mr {
+  color: red;
+  margin-left: 8px;
+  text-shadow: 1px 1px black;
+}
+.title {
+  width: 100%;
+  text-align: left;
+  background-color: black;
+}
+.length {
+  width: 4em;
+  padding-right: 20px;
+  text-align: right;
+  background-color: black;
+}
+#total {
+  padding: 0;
+  text-align: right;
+  color: white;
+  font-weight: bold;
+}
+#tlen {
+  padding: 0 10px 0 0;
+  text-align: right;
+  color: white;
+}
