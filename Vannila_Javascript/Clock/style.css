@@ -1,0 +1,53 @@
+*{
+    box-sizing: border-box;
+}
+body {
+    background-color: black;
+    margin: 0;
+    color: coral;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-position: center center;
+  }
+.Clock{
+    display: flex;
+}
+p{
+    font-size: 6rem;
+    margin: 0 3rem;
+}
+span{
+    color: white;
+    font-size: 2rem;
+}
+.clock{
+    text-align: center;
+}
+#hours{
+    color: blue;
+}
+#minutes{
+    color: green;
+}
+#seconds{
+    color: red;
+}
+b{
+    color: white;
+}
+h1{
+    font-size: 4rem;
+}
+#timeEvent{
+    margin-top: 4rem;
+    font-size: 4rem;
+    color: cornsilk;
+}
+#meridian{
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+}
