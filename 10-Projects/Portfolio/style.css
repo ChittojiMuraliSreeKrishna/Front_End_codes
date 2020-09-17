@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+body{
+    background-image: url('mine.jpg');
+    background-size: cover;
+    background-position: center center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-blend-mode: darken;
+}
+p{
+    color: seagreen;
+    font-size: 2rem;
+    width: 700px;
+    position: fixed;
+    top: 8rem;
+    left: 3rem;
+}
+h1{
+    background-color: white;
+    display: inline-block;
+    font-size: 5rem;
+    font-weight: normal;
+    padding: 1.5rem;
+    position: fixed;
+    top: 20rem;
+    left: 2rem;
+}
+section{
+    cursor: pointer;
+    position: fixed;
+    right: 3rem;
+    color: black;
+    font-size: 2.5rem;
+    text-align: right;
+}
+ul{
+    position: fixed;
+    top: 23rem;
+    right: 5rem;
+    font-size: 2rem;
+}
+li{
+    color: white;
+}
+strong{
+    font-weight: normal;
+}
+ul h3{
+    color: seagreen;
+    font-size: 3rem;
+    margin: 0;
+}
+span{
+    position: fixed;
+    top: 30rem;
+    left: 20rem;
+    text-align: right;
+    font-size: 1.5rem;
+}
+span b{
+    background-color: grey;
+    color: white;
+    display: inline-block;
+    padding: 2rem;
+}
