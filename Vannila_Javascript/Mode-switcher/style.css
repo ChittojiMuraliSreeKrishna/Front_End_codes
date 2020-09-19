@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+body{
+    color: black;
+}
+.dark-mode{
+    border: 0;
+    cursor: pointer;
+    font-size: 4rem;
+    background: transparent;
+    border-radius: 50px;
+}
+.button{
+    text-align: center;
+    margin-bottom: 8em;
+}
+.text{
+    text-align: center;
+}
+h1{
+    font-size: 4rem;
+    color: blue;
+}
+p{
+    font-size: 1.5rem;
+    color: red;
+}
+.dark{
+    background-color: black;
+    color: white;
+}
+b{
+    font-size: 2rem;
+}
+.bold{
+    text-align: center;
+    margin-bottom: 2rem;
+}
