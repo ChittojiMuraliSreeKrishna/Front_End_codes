@@ -2,7 +2,8 @@
   <head>
     <style>
       body {
-        background-color: #f8f8fa;
+        background-color: #000000;
+        color: #ffffff;
       }
       h1 {
         color: #006666;
@@ -42,39 +43,19 @@
         <tr>
           <td>Address</td>
           <td>
-            <textarea
-              name="address"
-              id="address"
-              rows="4"
-              colums="25"
-              placeholder="Fill Address here"
-              required
-            ></textarea>
+            <input name="address" id="address" placeholder="Fill Address here" required />
           </td>
         </tr>
         <tr>
           <td>Email</td>
           <td>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="abc@gmail.com"
-              required
-            />
+            <input type="text" id="email" name="email" placeholder="abc@gmail.com" required />
           </td>
         </tr>
-
         <tr>
           <td>Mobile Number</td>
           <td>
-            <input
-              type="text"
-              name="mobile"
-              id="mobile"
-              placeholder="Enter the Mobile Number"
-              pattern="[987]{1}[0-9]{9}"
-            />
+            <input type="text"  name="mobile" id="mobile" placeholder="Enter the Mobile Number" pattern="[987]{1}[0-9]{9}" />
           </td>
         </tr>
 
@@ -93,17 +74,11 @@
             <input type="submit" name="submit" id="submit" onclick="Add()" />
           </td>
           <td>
-            <input
-              type="submit"
-              value="Reset"
-              id="clear"
-              name="clear"
-              onclick="location.reload()"
-            />
+            <button type="submit"  value="Reset"  id="clear" name="clear"  onclick="location.reload()">
+            </button>
           </td>
         </tr>
       </table>
-
       <div name="result" id="result"></div>
     </center>
 
@@ -170,11 +145,7 @@
             '</td><td>' +
             templocation +
             '</td></tr>'
-          //AddressRegister(tempname,temptype,tempaddress,tempemail,tempmobile,templocation);
-          //Please fill the required code to store the values in tabledata.
         }
-
-        //alert(tabledata);
 
         tabledata += '</table>'
         if (flag == 0) {
